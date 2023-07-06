@@ -1,3 +1,3 @@
-/**
- * TODO: Create models
- */
+const Profile = require('./Profile');
+
+module.exports = { Profile };
