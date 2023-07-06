@@ -1,0 +1,17 @@
+[
+    {
+      "name": "The Doge",
+      "email": "thedoge@example.com",
+      "password": "Password01!"
+    },
+    {
+      "name": "Big Doge",
+      "email": "bigdoge@example.com",
+      "password": "password02"
+    },
+    {
+      "name": "Doge Machine",
+      "email": "dogemachine@example.com",
+      "password": "password02"
+    }
+]
