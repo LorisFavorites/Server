@@ -1,3 +1,16 @@
-/**
- * TODO: We don't really need to create seed data for a while but it's nice to have the file anyway
- */
+const db = require('../config/connection');
+const { Profile } = require('../models');
+const profileSeeds = require('./profileSeeds.json');
+
+db.once('open', async () => {
+    try {
+        await Profile.deleteMany({});
+        const users = await Profile.create(profileSeeds);
+
+        // console.table(users);
+        console.log('Seeding complete!');
+        process.exit(0);
+    } catch (err) {
+        throw err;
+    }
+});
