@@ -14,12 +14,25 @@ db.once('open', async () => {
         
         // const inventory = [{ _id: cards[0]._id, 'stock': 0 }, { _id: cards[1]._id, 'stock': 1 }];
 
-        const inventory = await Inventory.create({});
+        const inventory = await Inventory.create({ name: "pokecards" });
+
         console.log("Profiles created: ", profiles)
         console.log("Cards created: ", cards);
         console.log("Inventory created: ", inventory);
-        await Inventory.findOneAndUpdate({ _id: inventory._id }, { $push: { cards: cards } });
-        await Profile.findOneAndUpdate({ _id: profiles[0]._id }, { $push: { favorites: cards } });
+
+        const items = [
+            { 
+                cardId: cards[0]._id,
+                stock: 0
+            },
+            { 
+                cardId: cards[1]._id,
+                stock: 10
+            }
+        ]
+
+        await Inventory.findOneAndUpdate({ _id: inventory._id }, { $set: { cards: items } });
+        await Profile.findOneAndUpdate({ _id: profiles[0]._id }, { $addToSet: { favorites: cards } });
 
         // console.table(users);
         console.log('Seeding complete!');

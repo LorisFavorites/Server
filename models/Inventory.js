@@ -1,24 +1,19 @@
 const { Schema, model } = require('mongoose');
-const Card = require('./Card');
+const itemSchema = require('./Item');
 
 const inventorySchema = new Schema(
     {
-        cards: [
-            {   
-                type: Schema.Types.ObjectId,
-                ref: 'Card',
-                stock: {
-                    type: Number,
-                    default: 0,
-                },
-            }
-        ]
+        name: {
+            type: String,
+            unique: true
+        },
+        cards: [itemSchema]
     },
     {
         toJSON: {
             getters: true
         },
-        id: true,
+        id: false,
     }
 );
 
