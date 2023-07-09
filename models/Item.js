@@ -19,3 +19,5 @@ const itemSchema = new Schema(
         _id: false,
     }
 );
+
+module.exports = itemSchema;

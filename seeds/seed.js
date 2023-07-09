@@ -22,11 +22,11 @@ db.once('open', async () => {
 
         const items = [
             { 
-                cardId: cards[0]._id,
+                itemId: cards[0]._id,
                 stock: 0
             },
             { 
-                cardId: cards[1]._id,
+                itemId: cards[1]._id,
                 stock: 10
             }
         ]

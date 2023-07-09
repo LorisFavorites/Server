@@ -12,7 +12,7 @@ const resolvers = {
             return Profile.findOne({ _id: profileId });
         },
         inventories: async () => {
-            return Inventory.find().populate('cards');
+            return Inventory.find();
         },
         cards: async () => {
             return Card.find();

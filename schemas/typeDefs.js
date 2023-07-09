@@ -18,10 +18,17 @@ const typeDefs = `
         price: Int
         stock: Int
     }
+    
+    # Lowercase because it is a subdocument
+    type item {
+        itemId: ID
+        stock: Int
+    }
 
     type Inventory {
         _id: ID
-        cards: [Card]
+        name: String
+        cards: [item]
     }
 
     type Query {
