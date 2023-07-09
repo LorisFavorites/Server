@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Card = require('./Card');
 
 const profileSchema = new Schema({
     name: {
@@ -18,6 +19,12 @@ const profileSchema = new Schema({
         required: true,
         minlength: 8
     },
+    favorites: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Card',
+        }
+    ]
 });
 
 profileSchema.pre('save', async function (next) {

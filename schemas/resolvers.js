@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('@apollo/server');
 const { signToken } = require('../utils/auth');
-const { Profile } = require('../models');
+const { Profile, Inventory } = require('../models');
 
 const resolvers = {
     Query: {
@@ -11,14 +11,23 @@ const resolvers = {
         profile: async (parent, { profileId }) => {
             return Profile.findOne({ _id: profileId });
         },
+        inventory: async () => {
+            return Inventory.find().populate('cards');
+        },
 
         // Query that uses context, we can retrieve the logged in user without specifically searching for them
-        me: async (parent, args, context) => {
+        account: async (parent, args, context) => {
             if (context.user) {
                 return Profile.findOne({ _id: context.user._id });
             }
             throw new AuthenticationError('You must be logged in for this feature!');
         },
+        favorites: async (parent, args, context) => {
+            if (context.user) {
+                return Profile.findOne({ _id: context.user._id }).populate('favorites');
+            }
+            throw new AuthenticationError('You must be logged in for this feature!');
+        }
     },
 
     Mutation: {
@@ -63,6 +72,31 @@ const resolvers = {
                 return Profile.findOneAndDelete({ _id: context.user._id });
             }
             throw new AuthenticationError('You must be logged in to perform this action!');
+        },
+        addFavorite: async (parent, { profileId, favorite }, context) => {
+            if (context.user) {
+                return Profile.findOneAndUpdate(
+                    { _id: context.user._id },
+                    {
+                        $addToSet: { favorites: favorite },
+                    },
+                    {
+                        new: true,
+                        runValidators: true,
+                    }
+                );
+            }
+            throw new AuthenticationError('You need to be logged in to perform this action!')
+        },
+        removeFavorite: async (parent, { profileId, favorite }, context) => {
+            if (context.user) {
+                return Profile.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { favorites: favorite } },
+                    { new: true }
+                );
+            }
+            throw new AuthenticationError('You need to be logged in to perform this action!')
         }
     }
 }
