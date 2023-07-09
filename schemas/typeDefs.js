@@ -25,9 +25,13 @@ const typeDefs = `
     }
 
     type Query {
+        # Profile queries
         profiles: [Profile]!
         profile(profileId: ID!): Profile
-        inventory: Inventory!
+
+        inventories: [Inventory]!
+        cards: [Card]!
+
         # Context functionality uses JWT to decode data, so query will always return logged in user
         account: Profile
         favorites: [ID]

@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('@apollo/server');
 const { signToken } = require('../utils/auth');
-const { Profile, Inventory } = require('../models');
+const { Profile, Inventory, Card } = require('../models');
 
 const resolvers = {
     Query: {
@@ -11,8 +11,11 @@ const resolvers = {
         profile: async (parent, { profileId }) => {
             return Profile.findOne({ _id: profileId });
         },
-        inventory: async () => {
+        inventories: async () => {
             return Inventory.find().populate('cards');
+        },
+        cards: async () => {
+            return Card.find();
         },
 
         // Query that uses context, we can retrieve the logged in user without specifically searching for them
