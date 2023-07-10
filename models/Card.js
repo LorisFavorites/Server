@@ -30,11 +30,10 @@ const cardSchema = new Schema(
         toJSON: {
             getters: true,
         },
-        id: false,
     }
 );
 
 // Schema only, this does not have an instantiated model.
-const Card = model('Card', cardSchema)
+const Card = model('Card', cardSchema);
 
 module.exports = Card;

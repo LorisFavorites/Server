@@ -4,6 +4,7 @@ const typeDefs = `
         name: String
         email: String
         password: String
+        favorites: [Card]
     }
 
     type Auth {
@@ -41,7 +42,7 @@ const typeDefs = `
 
         # Context functionality uses JWT to decode data, so query will always return logged in user
         account: Profile
-        favorites: [ID]
+        favorites: Profile
     }
 
     type Mutation {

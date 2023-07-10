@@ -16,7 +16,7 @@ db.once('open', async () => {
 
         const inventory = await Inventory.create({ name: "pokecards" });
 
-        console.log("Profiles created: ", profiles)
+        console.log("Profiles created: ", profiles);
         console.log("Cards created: ", cards);
         console.log("Inventory created: ", inventory);
 
