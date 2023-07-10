@@ -9,5 +9,10 @@
         "imgUrl": "Exampleurl.example2",
         "price": 100,
         "stock": 0
+    },
+    {
+        "name": "Third card",
+        "imgUrl": "Exampleurl.third",
+        "price": 420
     }
 ]

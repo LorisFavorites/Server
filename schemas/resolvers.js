@@ -68,6 +68,7 @@ const resolvers = {
             */
             const token = signToken(profile);
             return { token, profile };
+            // return { token, profile: { _id: profile._id, name: profile.name, email: profile.email} };
         },
         // Set up mutation so a logged in user can only remove their own profile and no one else's
         removeProfile: async (parent, args, context) => {

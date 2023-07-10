@@ -28,6 +28,10 @@ db.once('open', async () => {
             { 
                 itemId: cards[1]._id,
                 stock: 10
+            },
+            {
+                itemId: cards[2]._id,
+                stock: 10
             }
         ]
 
