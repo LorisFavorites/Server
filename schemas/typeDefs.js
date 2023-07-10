@@ -4,6 +4,7 @@ const typeDefs = `
         name: String
         email: String
         password: String
+        favorites: [Card]
     }
 
     type Auth {
@@ -11,11 +12,37 @@ const typeDefs = `
         profile: Profile
     }
 
+    type Card {
+        _id: ID
+        name: String
+        imgUrl: String
+        price: Int
+        stock: Int
+    }
+    
+    # Lowercase because it is a subdocument
+    type item {
+        itemId: ID
+        stock: Int
+    }
+
+    type Inventory {
+        _id: ID
+        name: String
+        cards: [item]
+    }
+
     type Query {
+        # Profile queries
         profiles: [Profile]!
         profile(profileId: ID!): Profile
+
+        inventories: [Inventory]!
+        cards: [Card]!
+
         # Context functionality uses JWT to decode data, so query will always return logged in user
-        me: Profile
+        account: Profile
+        favorites: Profile
     }
 
     type Mutation {
@@ -23,6 +50,9 @@ const typeDefs = `
         login(email: String!, password: String!): Auth
 
         removeProfile: Profile
+
+        addFavorite(favorite: ID!): Profile
+        removeFavorite(favorite: ID!): Profile
     }
 `;
 
