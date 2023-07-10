@@ -31,10 +31,6 @@ const typeDefs = `
         cards: [item]
     }
 
-    type Favs {
-        cards: [Card]
-    }
-
     type Query {
         # Profile queries
         profiles: [Profile]!
