@@ -31,6 +31,10 @@ const typeDefs = `
         cards: [item]
     }
 
+    type Favs {
+        cards: [Card]
+    }
+
     type Query {
         # Profile queries
         profiles: [Profile]!
@@ -41,7 +45,7 @@ const typeDefs = `
 
         # Context functionality uses JWT to decode data, so query will always return logged in user
         account: Profile
-        favorites: Profile
+        favorites: [Card]
     }
 
     type Mutation {
