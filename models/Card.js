@@ -26,7 +26,7 @@ const cardSchema = new Schema(
                 type:String
             },
         },
-        cardMarket: {
+        cardmarket: {
             url: {
                 type: String
             },
