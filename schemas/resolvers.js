@@ -27,7 +27,10 @@ const resolvers = {
         },
         favorites: async (parent, args, context) => {
             if (context.user) {
-                return Profile.findOne({ _id: context.user._id }).populate('favorites');
+                const profile = await Profile.findOne({ _id: context.user._id }).populate('favorites');
+                // console.log(profile);
+                return profile.favorites;
+                // return Profile.findOne({ _id: context.user._id }).populate('favorites');
             }
             throw new AuthenticationError('You must be logged in for this feature!');
         }
@@ -68,6 +71,7 @@ const resolvers = {
             */
             const token = signToken(profile);
             return { token, profile };
+            // return { token, profile: { _id: profile._id, name: profile.name, email: profile.email} };
         },
         // Set up mutation so a logged in user can only remove their own profile and no one else's
         removeProfile: async (parent, args, context) => {

@@ -3,7 +3,6 @@ const typeDefs = `
         _id: ID
         name: String
         email: String
-        password: String
         favorites: [Card]
     }
 
@@ -12,12 +11,24 @@ const typeDefs = `
         profile: Profile
     }
 
+    type images {
+        small: String
+        large: String
+    }
+
+    type cardmarket {
+        url: String
+        updatedAt: String
+
+    }
+
     type Card {
         _id: ID
         name: String
-        imgUrl: String
-        price: Int
-        stock: Int
+        images: [images]
+        cardmarket: {
+            
+        }
     }
     
     # Lowercase because it is a subdocument
@@ -42,7 +53,7 @@ const typeDefs = `
 
         # Context functionality uses JWT to decode data, so query will always return logged in user
         account: Profile
-        favorites: Profile
+        favorites: [Card]
     }
 
     type Mutation {

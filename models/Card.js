@@ -6,25 +6,41 @@ const { Schema, model } = require('mongoose');
 */
 const cardSchema = new Schema(
     {
+        id: {
+            type: String,
+            required: true,
+        },
         name: {
             type: String,
             required: true,
             maxlength: 280,
         },
-        imgUrl: {
-            type: String,
-            required: true,
-            maxlength: 280,
+        flavorText: {
+            type: String
         },
-        price: {
-            type: Number,
-            required: true,
+        images: {
+            small: {
+                type: String
+            },
+            large: {
+                type:String
+            },
         },
-        stock: {
-            type: Number,
-            default: 0,
+        cardmarket: {
+            url: String,
+            updatedAt: String,
+            prices: {
+                averageSellPrice: {
+                    type: Number
+                },
+                lowPrice: {
+                    type: Number
+                },
+                trendPrice: {
+                    type: Number
+                }
+            }
         },
-
     },
     {
         toJSON: {

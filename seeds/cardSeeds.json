@@ -1,13 +1,56 @@
 [
     {
+        "id": "12314",
         "name": "Example card",
-        "imgUrl": "Exampleurl.example",
-        "price": 0
+        "flavorText": "",
+        "images": {
+            "small": "gg",
+            "large": "wp"
+        },
+        "cardmarket": {
+            "url": "fjkjjkkdkld",
+            "updatedAt": "l213/123/",
+            "prices": {
+                "averageSellPrice": 123,
+                "lowPrice": 0.1,
+                "trendPrice": 1.0
+            }
+        }
     },
     {
+        "id": "12314",
         "name": "Example card 2",
-        "imgUrl": "Exampleurl.example2",
-        "price": 100,
-        "stock": 0
+        "flavorText": "asasdasd",
+        "images": {
+            "small": "asd",
+            "large": "sfasf"
+        },
+        "cardmarket": {
+            "url": "fjkjjkkdkld",
+            "updatedAt": "l213/123/",
+            "prices": {
+                "averageSellPrice": 322,
+                "lowPrice": 1.1,
+                "trendPrice": 1.2
+            }
+        }
+    },
+    {
+        "id": "1111",
+        "name": "Example card3",
+        "flavorText": "22222222222",
+        "images": {
+            "small": "11111111",
+            "large": "2sdfa"
+        },
+        "cardmarket": {
+            "url": "fjkjjkkdkld",
+            "updatedAt": "l213/123/",
+            "prices": {
+                "averageSellPrice": 123,
+                "lowPrice": 4.1,
+                "trendPrice": 1.0
+            }
+        }
     }
 ]
