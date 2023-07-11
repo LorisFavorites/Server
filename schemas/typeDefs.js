@@ -11,12 +11,24 @@ const typeDefs = `
         profile: Profile
     }
 
+    type images {
+        small: String
+        large: String
+    }
+
+    type cardmarket {
+        url: String
+        updatedAt: String
+
+    }
+
     type Card {
         _id: ID
         name: String
-        imgUrl: String
-        price: Int
-        stock: Int
+        images: [images]
+        cardmarket: {
+            
+        }
     }
     
     # Lowercase because it is a subdocument

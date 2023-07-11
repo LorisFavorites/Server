@@ -14,7 +14,7 @@ db.once('open', async () => {
         
         // const inventory = [{ _id: cards[0]._id, 'stock': 0 }, { _id: cards[1]._id, 'stock': 1 }];
 
-        const inventory = await Inventory.create({ name: "pokecards" });
+        const inventory = await Inventory.create({ name: "testdata" });
 
         console.log("Profiles created: ", profiles);
         console.log("Cards created: ", cards);

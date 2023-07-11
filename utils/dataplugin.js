@@ -34,7 +34,38 @@ db.once('open', async () => {
             }
         });
 
-        await Card.create(cards);
+        // Create new cards
+        const newCards = await Card.create(cards);
+
+        // Create items array
+        const items = [];
+
+        // newCards.forEach((card) => {
+        //     let num = Math.floor(Math.random() * 100);
+        //     items.push({ itemId: card._id, stock: num });
+        // });
+
+        for (let i = 0; i < 4; i++) {
+            let num = Math.floor(Math.random() * 100);
+            items.push({ itemId: newCards[0]._id, stock: num });
+        }
+        
+        // Update the inventory with the new cards
+        await Inventory.findOneAndUpdate({ name: "pokecards" }, { $set: { cards: items } }, { upsert: true });
+        
+        const sorted = await Inventory.
+            find({ name: 'pokecards'})
+            .populate(
+                { 
+                    path: 'cards.itemId',
+                    options: { sort: {'cardmarket.prices.averageSellPrice': -1 } } 
+                })
+            // .sort({'cards.itemId.cardmarket.prices.averageSellPrice': -1})
+
+        console.log('%j', sorted[0].cards);
+        // console.log(sorted[0].cards);
+
+        // await Inventory.findOneAndUpdate({ name: 'pokecards_sorted' }, { $set: sorted[0] }, { upsert: true });
 
         console.log('Data pull complete!');
         process.exit(0);
