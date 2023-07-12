@@ -1,4 +1,28 @@
 const typeDefs = `
+    # Sub types
+    type item {
+        itemId: ID
+        stock: Int
+    }
+
+    type Prices {
+        averageSellPrice: Float
+        lowPrice: Float
+        trendPrice: Float
+    }
+
+    type Cardmarket {
+        url: String
+        updatedAt: String
+        prices: Prices
+    }
+
+    type Images {
+        small: String
+        large: String
+    }
+
+    # Regular types
     type Profile {
         _id: ID
         name: String
@@ -11,31 +35,15 @@ const typeDefs = `
         profile: Profile
     }
 
-    type images {
-        small: String
-        large: String
-    }
-
-    type cardmarket {
-        url: String
-        updatedAt: String
-
-    }
-
     type Card {
         _id: ID
+        id: String
         name: String
-        images: [images]
-        cardmarket: {
-            
-        }
+        flavorText: String
+        images: Images
+        cardmarket: Cardmarket
     }
     
-    # Lowercase because it is a subdocument
-    type item {
-        itemId: ID
-        stock: Int
-    }
 
     type Inventory {
         _id: ID

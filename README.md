@@ -1,1 +1,2 @@
-# Server
+# PokéFindr App
+
