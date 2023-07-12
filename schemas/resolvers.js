@@ -11,8 +11,8 @@ const resolvers = {
         profile: async (parent, { profileId }) => {
             return Profile.findOne({ _id: profileId });
         },
-        inventories: async () => {
-            return Inventory.find();
+        getInventory: async (parent, { inventory } ) => {
+            return Inventory.find({ name: inventory }).populate({path: 'cards.itemId'});
         },
         cards: async () => {
             return Card.find();

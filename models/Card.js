@@ -27,12 +27,8 @@ const cardSchema = new Schema(
             },
         },
         cardmarket: {
-            url: {
-                String
-            },
-            updatedAt: {
-                String
-            },
+            url: String,
+            updatedAt: String,
             prices: {
                 averageSellPrice: {
                     type: Number

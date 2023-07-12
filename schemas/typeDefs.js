@@ -1,7 +1,7 @@
 const typeDefs = `
     # Sub types
-    type item {
-        itemId: ID
+    type Item {
+        itemId: Card
         stock: Int
     }
 
@@ -44,11 +44,10 @@ const typeDefs = `
         cardmarket: Cardmarket
     }
     
-
     type Inventory {
         _id: ID
         name: String
-        cards: [item]
+        cards: [Item]
     }
 
     type Query {
@@ -56,7 +55,7 @@ const typeDefs = `
         profiles: [Profile]!
         profile(profileId: ID!): Profile
 
-        inventories: [Inventory]!
+        getInventory(inventory: String): [Inventory]
         cards: [Card]!
 
         # Context functionality uses JWT to decode data, so query will always return logged in user
